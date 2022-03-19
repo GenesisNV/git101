@@ -171,3 +171,10 @@ $Pegar os dados do servidor e trazer para o branche local
 git pull origin master		    $Faz um merge com o seu trabalho
 
 git fatch origin <NomeDoBranch> $Medida de seguraça. Manda os dados para um outro branch
+
+$=====================================================================$
+USANDO REBASE
+
+$Comando para continuar reabse.
+git rebase --continue
+

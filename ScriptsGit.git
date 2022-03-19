@@ -178,3 +178,9 @@ USANDO REBASE
 $Comando para continuar reabse.
 git rebase --continue
 
+
+$=====================================================================$
+USANDO REBASE
+
+$Comando para Repetir rebase.
+git rebase --continue

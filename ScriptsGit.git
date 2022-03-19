@@ -1,0 +1,173 @@
+$Comando do Git
+
+$=====================================================================$
+$Aula 1 - Cofiguração inicial
+
+git config --global user.name "Cristiano"
+git config --global user.email "vieira.10envolvedor@outlook.com"
+
+git config --list
+
+$=====================================================================$
+$Aula 2 - Comandos básicos
+
+cd <pasta> $--> vai pra pasta desejada
+cd ..      $--> volta o nível
+clear      $--> limpa a tela
+
+$Criar um repositorio - é a primeira coisa a fazer na pasta
+
+git init
+
+git init --bare $-->Cria um repositorio de rede
+
+$Saber o status do repositorio atual
+
+git status 
+
+$adcionar os arquivos no repositorio para ser traqueado (controlado pelo git)
+$git add faz o arquivo sair do working directory para satege area
+
+git add .               $--> para adcionar todos os arquivos e pastas
+git add .exe            $--> para adcionar todos os arquivos de exe
+git add <NomeDoArquio>  $--> para adcionar um arquivo especifico
+
+
+$Commitar os arquivos definitivamente
+$O Commit retira os arquivos da stage area e manda pro repositorio
+
+git commit -m "Mensagem do commit"
+
+git commit -a -m "Mensagem do commit" $-->Adciona e commita os arquivos
+
+$Criar arquivo para ignorar arquivos ou pasta
+$Na pasta do projeto, criar um arquivo chamado .gitignore.
+$Nele deve ser inserido os arquivos ou pastas para ser ignorado pelo git.
+
+$=====================================================================$
+$Aula 3 - Visualizando as alterações
+
+$Visualizar o que foi alterado
+
+git diff          $--> pra visualizar o que foi alterado no working directory.
+git diff --staged $--> pra visualizar o que foi alterado na stage area.
+
+$Mostra o histórico de todos os commits
+
+git log        $--> Log simples
+git log -p     $--> Log com o diff
+git log -p -2  $--> Log com dois commits
+
+$Chamar a interface para visualizar as alterações
+
+gitk
+
+$=====================================================================$
+$Aula 4 - Voltando a versão
+
+$Mostra o histórico dos commits com apenas o codigo e menssagem do commit.
+
+git log --pretty=oneline
+
+$Editar o último commit
+
+git commit --amend -m "Mensagem do commit(Editado)"
+
+$Retirar arquivos da stage area
+
+git reset HEAD <NomeDoArquio>
+
+$Descatar as mudanças no working directory
+$Caso não queira restauar o arquivo ao estado original
+
+git checkout -- <NomeDoArquio>
+
+$Para remove arquivos do repositorio (inverso do git add)
+
+git rm <NomeDoArquio>
+
+$Para remover arquvos do repositorio sem deletar o arquivo da pasta
+git rm --cached <NomeDoArquio>
+
+$=====================================================================$
+$Aula 5 - Tags e Branches
+
+$Listar as tags do sistema
+
+git tag 
+
+$Criar uma tag
+$O -a é pra criar uma tag anotada(guarda as informações de quem a criou)
+
+$A tag é sempre criado no commit atual
+git tag -a <NomeDaTag> -m "Mensagem da tag"
+
+$Criar tag num commit especifico:
+$Use o comando git log --pretty=oneline e depois
+
+git tag -a <NomeDaTag> <Codigo do commit> -m "Mensagem da tag"
+
+$Para mostrar detalhe da tag
+
+git show <NomeDaTag>
+
+$Usando a tag para fazer checkout
+
+git checkout <NomeDaTag>
+git checkout master      $--> Faz o checkout do Branch master
+
+$Apagar uma tag especifica
+
+git tag -d <NomeDaTag>
+
+$---------------Branch---------------------$
+
+$Listar todos os branches
+
+git branch
+
+$Cria um novo branch
+
+git branch <NomeDoBranch>
+
+$Fazer o checkout do branch criado
+
+git checkout <NomeDoBranch>
+
+git checkout -b <NomeDoBranch> $--> faz o checkout e cria o branch
+
+$Mesclar um branch com o branch atual
+$Certificar que está no branch de destino (por ex. master)
+
+git merge <BranchOrigem>
+
+$Apagar um branch
+
+git branch -d <NomeDoBranch>
+
+
+$=====================================================================$
+$Aula 6 - Usando rede
+
+$A primeira coisa a fazer é criar um repositorio de rede
+
+git init --bare
+
+$Clonar o repositorio do servidor na maquina cliente
+
+git clone file:////REPOSITORIOS/Projetos/Team <NomeNaMaquinaCliente>
+
+$Saber o nome do servidor remoto
+
+git remote
+
+$Enviar os dados comitados para o servidor
+
+git push origin master $--> envia os arquivos do branche master local,
+                       $    para o servidor origin.
+					   
+$Pegar os dados do servidor e trazer para o branche local
+
+git pull origin master		    $Faz um merge com o seu trabalho
+
+git fatch origin <NomeDoBranch> $Medida de seguraça. Manda os dados para um outro branch
